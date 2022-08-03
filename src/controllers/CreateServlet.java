@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Message;
 import models.validators.MessageValidator;
 import utils.DBUtil;
+
 /**
  * Servlet implementation class CreateServlet
  */
@@ -72,15 +73,6 @@ public class CreateServlet extends HttpServlet {
                 // indexのページにリダイレクト
                 response.sendRedirect(request.getContextPath() + "/index");
             }
-
-         // データベースに保存
-            em.persist(m);
-            em.getTransaction().commit();
-            request.getSession().setAttribute("flush", "登録が完了しました。");       // ここを追記
-            em.close();
-
-            response.sendRedirect(request.getContextPath() + "/index");
         }
     }
-
 }
